@@ -17,7 +17,7 @@ public class ProductDAO {
 	
 	public void insert(ProductVO productVO) {
 		sqlSession.insert("product.insert", productVO);
-	};
+	}
 	
 	public List<ProductVO> selectAll() {
 		List<ProductVO> products = sqlSession.selectList("product.selectAll");
@@ -27,5 +27,13 @@ public class ProductDAO {
 	public Optional<ProductVO> select(Long id) {
 		ProductVO products = sqlSession.selectOne("product.select", id);
 		return Optional.ofNullable(products);
+	}
+	
+	public void update(ProductVO productVO) {
+		sqlSession.update("product.update", productVO);
+	}
+	
+	public void delete(Long id) {
+		sqlSession.delete("product.delete", id);
 	}
 }
